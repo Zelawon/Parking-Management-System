@@ -1,0 +1,1566 @@
+[
+    {
+        "id": "c84deb6901de45b0",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4f3ae47c08bacd2b",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Car Park",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "7fc5c1be.1d84d8",
+        "type": "mqtt-broker",
+        "name": "Local MQTT Broker",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "parking-status-display",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": false,
+        "willPayload": ""
+    },
+    {
+        "id": "f5e276b1.d72498",
+        "type": "ui_group",
+        "name": "Car :",
+        "tab": "b22d6b9b.f6a63",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b22d6b9b.f6a63",
+        "type": "ui_tab",
+        "name": "Car Park Dashboard",
+        "icon": "fa-tachometer",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "6ed3c301512b7d7c",
+        "type": "ui_group",
+        "name": "Electric Vehicles :",
+        "tab": "b22d6b9b.f6a63",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2831cacdeb34db72",
+        "type": "ui_group",
+        "name": "Motorcycle :",
+        "tab": "b22d6b9b.f6a63",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ff302572.914b18",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 1 Slot 10",
+        "topic": "parking/floor1/slot10",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "d1b0a5f6.4748b8"
+            ]
+        ]
+    },
+    {
+        "id": "d1b0a5f6.4748b8",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "6ed3c301512b7d7c",
+        "name": "Display Slot 10",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 10: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 500,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d5e59a72.b5a1f8",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 1 Slot 11",
+        "topic": "parking/floor1/slot11",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "44cd99f5.a39f5c"
+            ]
+        ]
+    },
+    {
+        "id": "44cd99f5.a39f5c",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "6ed3c301512b7d7c",
+        "name": "Display Slot 11",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 11: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 500,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a72f5a5a.44da88",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 1 Slot 12",
+        "topic": "parking/floor1/slot12",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 320,
+        "y": 220,
+        "wires": [
+            [
+                "1f5eb0ad.90795f"
+            ]
+        ]
+    },
+    {
+        "id": "1f5eb0ad.90795f",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "6ed3c301512b7d7c",
+        "name": "Display Slot 12",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 12: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 500,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f0e4127a.54838",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 1 Slot 13",
+        "topic": "parking/floor1/slot13",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "2e19b9c2.5b5f98"
+            ]
+        ]
+    },
+    {
+        "id": "2e19b9c2.5b5f98",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "2831cacdeb34db72",
+        "name": "Display Slot 13",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 13: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 500,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e27c9e3d.2be8f8",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 1 Slot 14",
+        "topic": "parking/floor1/slot14",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 320,
+        "y": 300,
+        "wires": [
+            [
+                "b415bedb.d5b7f"
+            ]
+        ]
+    },
+    {
+        "id": "b415bedb.d5b7f",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "2831cacdeb34db72",
+        "name": "Display Slot 14",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 14: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 500,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c80c9913.535b48",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 1 Slot 15",
+        "topic": "parking/floor1/slot15",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "5ebaddd4.9d82d8"
+            ]
+        ]
+    },
+    {
+        "id": "5ebaddd4.9d82d8",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "name": "Display Slot 15",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 15: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 500,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fd30ca02.3a58f8",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 1 Slot 16",
+        "topic": "parking/floor1/slot16",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 320,
+        "y": 380,
+        "wires": [
+            [
+                "279e6bdb.26b4f8"
+            ]
+        ]
+    },
+    {
+        "id": "279e6bdb.26b4f8",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "name": "Display Slot 16",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 16: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 500,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c42a7b55.f5e5a",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 1 Slot 17",
+        "topic": "parking/floor1/slot17",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 320,
+        "y": 420,
+        "wires": [
+            [
+                "8c1a49f6.a93b98"
+            ]
+        ]
+    },
+    {
+        "id": "8c1a49f6.a93b98",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "name": "Display Slot 17",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 17: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 500,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c7438120.1688c8",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 1 Slot 18",
+        "topic": "parking/floor1/slot18",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 320,
+        "y": 460,
+        "wires": [
+            [
+                "fb6fe2fd.a1bc08"
+            ]
+        ]
+    },
+    {
+        "id": "fb6fe2fd.a1bc08",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "name": "Display Slot 18",
+        "order": 6,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 18: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 500,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "29d087fb.17f168",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 1 Slot 19",
+        "topic": "parking/floor1/slot19",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 320,
+        "y": 500,
+        "wires": [
+            [
+                "b477dc87.84eeb8"
+            ]
+        ]
+    },
+    {
+        "id": "b477dc87.84eeb8",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "name": "Display Slot 19",
+        "order": 7,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 19: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 500,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cc178cd1.8f994",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 2 Slot 20",
+        "topic": "parking/floor2/slot20",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 800,
+        "y": 140,
+        "wires": [
+            [
+                "ca1a82d2.f1f2b8"
+            ]
+        ]
+    },
+    {
+        "id": "ca1a82d2.f1f2b8",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "6ed3c301512b7d7c",
+        "name": "Display Slot 20",
+        "order": 7,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 20: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 980,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "55e33b74.44c3b",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 2 Slot 21",
+        "topic": "parking/floor2/slot21",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 800,
+        "y": 180,
+        "wires": [
+            [
+                "c7b5f98f.c1ed08"
+            ]
+        ]
+    },
+    {
+        "id": "c7b5f98f.c1ed08",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "6ed3c301512b7d7c",
+        "name": "Display Slot 21",
+        "order": 8,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 21: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 980,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e2eaf4e.91de8c",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 2 Slot 22",
+        "topic": "parking/floor2/slot22",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 800,
+        "y": 220,
+        "wires": [
+            [
+                "cb300396.2c44f8"
+            ]
+        ]
+    },
+    {
+        "id": "cb300396.2c44f8",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "6ed3c301512b7d7c",
+        "name": "Display Slot 22",
+        "order": 9,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 22: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 980,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1f4e83b5.08f88a",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 2 Slot 23",
+        "topic": "parking/floor2/slot23",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 800,
+        "y": 260,
+        "wires": [
+            [
+                "2bcf389a.f876be"
+            ]
+        ]
+    },
+    {
+        "id": "2bcf389a.f876be",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "2831cacdeb34db72",
+        "name": "Display Slot 23",
+        "order": 6,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 23: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 980,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fbd44244.c3cbe",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 2 Slot 24",
+        "topic": "parking/floor2/slot24",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 800,
+        "y": 300,
+        "wires": [
+            [
+                "1e2155c5.9a4ab3"
+            ]
+        ]
+    },
+    {
+        "id": "1e2155c5.9a4ab3",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "2831cacdeb34db72",
+        "name": "Display Slot 24",
+        "order": 7,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 24: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 980,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "702c469d.8e0f9c",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 2 Slot 25",
+        "topic": "parking/floor2/slot25",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 800,
+        "y": 340,
+        "wires": [
+            [
+                "ca019eb6.0eebd"
+            ]
+        ]
+    },
+    {
+        "id": "ca019eb6.0eebd",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "name": "Display Slot 25",
+        "order": 9,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 25: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 980,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ab221828.346b78",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 2 Slot 26",
+        "topic": "parking/floor2/slot26",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 800,
+        "y": 380,
+        "wires": [
+            [
+                "4be5c1c7.9fe0d"
+            ]
+        ]
+    },
+    {
+        "id": "4be5c1c7.9fe0d",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "name": "Display Slot 26",
+        "order": 10,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 26: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 980,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "50932c30.5587bc",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 2 Slot 27",
+        "topic": "parking/floor2/slot27",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 800,
+        "y": 420,
+        "wires": [
+            [
+                "d2147c32.d3b88"
+            ]
+        ]
+    },
+    {
+        "id": "d2147c32.d3b88",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "name": "Display Slot 27",
+        "order": 11,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 27: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 980,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "118905fb.5f8c8a",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 2 Slot 28",
+        "topic": "parking/floor2/slot28",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 800,
+        "y": 460,
+        "wires": [
+            [
+                "1d56a740.032ef1"
+            ]
+        ]
+    },
+    {
+        "id": "1d56a740.032ef1",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "name": "Display Slot 28",
+        "order": 12,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 28: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 980,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7f342ab8.d19f58",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Floor 2 Slot 29",
+        "topic": "parking/floor2/slot29",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "inputs": 0,
+        "x": 800,
+        "y": 500,
+        "wires": [
+            [
+                "7a64ca7d.8109a4"
+            ]
+        ]
+    },
+    {
+        "id": "7a64ca7d.8109a4",
+        "type": "ui_template",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "name": "Display Slot 29",
+        "order": 13,
+        "width": 6,
+        "height": 1,
+        "format": "<span style='color:{{msg.payload === \"occupied\" ? \"red\" : \"green\"}};'>Slot 29: {{msg.payload === \"occupied\" ? \"Occupied\" : \"Available\"}}</span>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "x": 980,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "mqtt_in_car_slot15",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Car Slot 15",
+        "topic": "parking/floor1/slot15",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 960,
+        "wires": [
+            [
+                "68b3d71b.bedeb"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_car_slot16",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Car Slot 16",
+        "topic": "parking/floor1/slot16",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 1000,
+        "wires": [
+            [
+                "68b3d71b.bedeb"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_car_slot17",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Car Slot 17",
+        "topic": "parking/floor1/slot17",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 1040,
+        "wires": [
+            [
+                "68b3d71b.bedeb"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_car_slot18",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Car Slot 18",
+        "topic": "parking/floor1/slot18",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 1080,
+        "wires": [
+            [
+                "68b3d71b.bedeb"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_car_slot19",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Car Slot 19",
+        "topic": "parking/floor1/slot19",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 1120,
+        "wires": [
+            [
+                "68b3d71b.bedeb"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_car_slot25",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Car Slot 25",
+        "topic": "parking/floor2/slot25",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 1160,
+        "wires": [
+            [
+                "68b3d71b.bedeb"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_car_slot26",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Car Slot 26",
+        "topic": "parking/floor2/slot26",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 1200,
+        "wires": [
+            [
+                "68b3d71b.bedeb"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_car_slot27",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Car Slot 27",
+        "topic": "parking/floor2/slot27",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 1240,
+        "wires": [
+            [
+                "68b3d71b.bedeb"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_car_slot28",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Car Slot 28",
+        "topic": "parking/floor2/slot28",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 1280,
+        "wires": [
+            [
+                "68b3d71b.bedeb"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_car_slot29",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Car Slot 29",
+        "topic": "parking/floor2/slot29",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 320,
+        "y": 1320,
+        "wires": [
+            [
+                "68b3d71b.bedeb"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_motorcycle_slot13",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Motorcycle Slot 13",
+        "topic": "parking/floor1/slot13",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 350,
+        "y": 1400,
+        "wires": [
+            [
+                "a21ecab5.09e35"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_motorcycle_slot14",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Motorcycle Slot 14",
+        "topic": "parking/floor1/slot14",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 350,
+        "y": 1440,
+        "wires": [
+            [
+                "a21ecab5.09e35"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_motorcycle_slot23",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Motorcycle Slot 23",
+        "topic": "parking/floor2/slot23",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 350,
+        "y": 1480,
+        "wires": [
+            [
+                "a21ecab5.09e35"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_motorcycle_slot24",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Motorcycle Slot 24",
+        "topic": "parking/floor2/slot24",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 350,
+        "y": 1520,
+        "wires": [
+            [
+                "a21ecab5.09e35"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_electric_slot10",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Electric Slot 10",
+        "topic": "parking/floor1/slot10",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 340,
+        "y": 680,
+        "wires": [
+            [
+                "e6b34817.8f6e88"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_electric_slot11",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Electric Slot 11",
+        "topic": "parking/floor1/slot11",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 340,
+        "y": 720,
+        "wires": [
+            [
+                "e6b34817.8f6e88"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_electric_slot12",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Electric Slot 12",
+        "topic": "parking/floor1/slot12",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 340,
+        "y": 760,
+        "wires": [
+            [
+                "e6b34817.8f6e88"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_electric_slot20",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Electric Slot 20",
+        "topic": "parking/floor2/slot20",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 340,
+        "y": 800,
+        "wires": [
+            [
+                "e6b34817.8f6e88"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_electric_slot21",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Electric Slot 21",
+        "topic": "parking/floor2/slot21",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 340,
+        "y": 840,
+        "wires": [
+            [
+                "e6b34817.8f6e88"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_electric_slot22",
+        "type": "mqtt in",
+        "z": "c84deb6901de45b0",
+        "name": "Electric Slot 22",
+        "topic": "parking/floor2/slot22",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "7fc5c1be.1d84d8",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 340,
+        "y": 880,
+        "wires": [
+            [
+                "e6b34817.8f6e88"
+            ]
+        ]
+    },
+    {
+        "id": "68b3d71b.bedeb",
+        "type": "function",
+        "z": "c84deb6901de45b0",
+        "name": "Calculate Car Percentage",
+        "func": "// List of car slots\nlet carSlots = [15, 16, 17, 18, 19, 25, 26, 27, 28, 29];\n\n// Initialize slot status (occupied or free) if it doesn't exist already\nif (!context.carSlotStatus) {\n    context.carSlotStatus = {};\n    // Set all car slots to free initially\n    carSlots.forEach(slot => {\n        context.carSlotStatus[slot] = \"free\";\n    });\n}\n\n// Update the status of the slot based on the incoming MQTT message\nlet slot = parseInt(msg.topic.split(\"/\")[2].replace(\"slot\", \"\"));\nif (carSlots.includes(slot)) {\n    // Set the slot status based on the payload\n    context.carSlotStatus[slot] = msg.payload;\n}\n\n// Count the number of occupied car slots\nlet occupiedCarSlots = Object.values(context.carSlotStatus).filter(status => status === \"occupied\").length;\n\n// Calculate the percentage of occupied car slots\nlet carOccupiedPercentage = (occupiedCarSlots / carSlots.length) * 100;\n\n// Round the percentage to 2 decimal places\ncarOccupiedPercentage = Math.round(carOccupiedPercentage * 100) / 100;\n\n// Output the percentage\nmsg.payload = carOccupiedPercentage;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 1140,
+        "wires": [
+            [
+                "4627f544.c02cc4"
+            ]
+        ]
+    },
+    {
+        "id": "4627f544.c02cc4",
+        "type": "ui_gauge",
+        "z": "c84deb6901de45b0",
+        "name": "Car Occupancy Percentage",
+        "group": "f5e276b1.d72498",
+        "order": 1,
+        "width": 6,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Car Occupancy",
+        "label": "%",
+        "format": "{{msg.payload}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1000,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "a21ecab5.09e35",
+        "type": "function",
+        "z": "c84deb6901de45b0",
+        "name": "Calculate Motorcycle Percentage",
+        "func": "// List of motorcycle slots\nlet motorcycleSlots = [13, 14, 23, 24];\n\n// Initialize slot status (occupied or free) if it doesn't exist already\nif (!context.motorcycleSlotStatus) {\n    context.motorcycleSlotStatus = {};\n    // Set all motorcycle slots to free initially\n    motorcycleSlots.forEach(slot => {\n        context.motorcycleSlotStatus[slot] = \"free\";\n    });\n}\n\n// Update the status of the slot based on the incoming MQTT message\nlet slot = parseInt(msg.topic.split(\"/\")[2].replace(\"slot\", \"\"));\nif (motorcycleSlots.includes(slot)) {\n    // Set the slot status based on the payload\n    context.motorcycleSlotStatus[slot] = msg.payload;\n}\n\n// Count the number of occupied motorcycle slots\nlet occupiedMotorcycleSlots = Object.values(context.motorcycleSlotStatus).filter(status => status === \"occupied\").length;\n\n// Calculate the percentage of occupied motorcycle slots\nlet motorcycleOccupiedPercentage = (occupiedMotorcycleSlots / motorcycleSlots.length) * 100;\n\n// Round the percentage to 2 decimal places\nmotorcycleOccupiedPercentage = Math.round(motorcycleOccupiedPercentage * 100) / 100;\n\n// Output the percentage\nmsg.payload = motorcycleOccupiedPercentage;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 1460,
+        "wires": [
+            [
+                "7cf070f6.218f5"
+            ]
+        ]
+    },
+    {
+        "id": "7cf070f6.218f5",
+        "type": "ui_gauge",
+        "z": "c84deb6901de45b0",
+        "name": "Motorcycle Occupancy Percentage",
+        "group": "2831cacdeb34db72",
+        "order": 1,
+        "width": 6,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Motorcycle Occupancy",
+        "label": "%",
+        "format": "{{msg.payload}}",
+        "min": "0",
+        "max": "100",
+        "x": 1020,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "e6b34817.8f6e88",
+        "type": "function",
+        "z": "c84deb6901de45b0",
+        "name": "Calculate Electric Vehicle Percentage",
+        "func": "// List of electric vehicle slots\nlet electricSlots = [10, 11, 12, 20, 21, 22];\n\n// Initialize slot status (occupied or free) if it doesn't exist already\nif (!context.electricSlotStatus) {\n    context.electricSlotStatus = {};\n    // Set all electric slots to free initially\n    electricSlots.forEach(slot => {\n        context.electricSlotStatus[slot] = \"free\";\n    });\n}\n\n// Update the status of the slot based on the incoming MQTT message\nlet slot = parseInt(msg.topic.split(\"/\")[2].replace(\"slot\", \"\"));\nif (electricSlots.includes(slot)) {\n    // Set the slot status based on the payload\n    context.electricSlotStatus[slot] = msg.payload;\n}\n\n// Count the number of occupied electric slots\nlet occupiedElectricSlots = Object.values(context.electricSlotStatus).filter(status => status === \"occupied\").length;\n\n// Calculate the percentage of occupied electric slots\nlet electricOccupiedPercentage = (occupiedElectricSlots / electricSlots.length) * 100;\n\n// Round the percentage to 2 decimal places\nelectricOccupiedPercentage = Math.round(electricOccupiedPercentage * 100) / 100;\n\n// Output the percentage\nmsg.payload = electricOccupiedPercentage;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 780,
+        "wires": [
+            [
+                "f98a2a22.9133d"
+            ]
+        ]
+    },
+    {
+        "id": "f98a2a22.9133d",
+        "type": "ui_gauge",
+        "z": "c84deb6901de45b0",
+        "name": "Electric Vehicle Occupancy Percentage",
+        "group": "6ed3c301512b7d7c",
+        "order": 1,
+        "width": 6,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Electric Vehicle Occupancy",
+        "label": "%",
+        "format": "{{msg.payload}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1040,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "98f78110f4891e6c",
+        "type": "ui_text",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Floor 1:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1340,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "43cb90200036d6b8",
+        "type": "ui_text",
+        "z": "c84deb6901de45b0",
+        "group": "6ed3c301512b7d7c",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Floor 1:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1340,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f1c48f96f371bb30",
+        "type": "ui_text",
+        "z": "c84deb6901de45b0",
+        "group": "2831cacdeb34db72",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Floor 1:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1340,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "675610592437012f",
+        "type": "ui_text",
+        "z": "c84deb6901de45b0",
+        "group": "6ed3c301512b7d7c",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Floor 2:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1340,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "8be8fde63cf0895d",
+        "type": "ui_text",
+        "z": "c84deb6901de45b0",
+        "group": "f5e276b1.d72498",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Floor 2:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1340,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "6db99b856bbd7a7c",
+        "type": "ui_text",
+        "z": "c84deb6901de45b0",
+        "group": "2831cacdeb34db72",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Floor 2:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1340,
+        "y": 360,
+        "wires": []
+    }
+]
