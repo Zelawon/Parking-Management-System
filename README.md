@@ -37,7 +37,7 @@ It visualizes parking slot availability in real time and categorizes occupancy b
    git clone https://github.com/Zelawon/Parking-Management-System.git
    cd smart-parking-management-system
 ```
-### Install dependencies**
+### Install dependencies
 
 **Update Your System**
 ```bash
@@ -77,3 +77,23 @@ python3 -m pip show paho-mqtt
 
 ## Usage
 
+**Start the MQTT Broker**
+```bash
+mosquitto
+```
+
+**Run Python Scripts**
+```bash
+python3 python/parking_manager.py
+python3 python/parking_status_display.py
+```
+
+**SLaunch Node-RED Dashboard**
+```bash
+node-red
+```
+- Access the Node-RED at http://localhost:1880/.
+- Access the dashboard at http://localhost:1880/ui.
+
+## License
+This project is licensed under the GPL-3.0 License. See the `LICENSE` file for details.
